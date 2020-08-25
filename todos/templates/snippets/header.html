@@ -1,3 +1,4 @@
+{% load static %}
 <style>
 
     .nav-masthead .nav-link {
@@ -34,7 +35,7 @@
 
 <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-dark border-bottom box-shadow">
     <!--    <h5 class="my-0 mr-md-auto font-weight-normal text-white">NBI</h5>-->
-    <img class="my-0 mr-md-auto" src="/static/nita.png" alt="Simply Easy Learning" width="200"
+    <img class="my-0 mr-md-auto" src="{% static 'nita.png' %}" alt="Simply Easy Learning" width="200"
          height="70">
     <h5 class="my-0 mr-md-auto font-weight-normal">
         {% if request.user.is_authenticated %}
