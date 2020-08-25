@@ -29,7 +29,6 @@ ALLOWED_HOSTS = []
 if DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # During development only
 
-
 MY_MAPBOX_ACCESS_TOKEN = 'pk.eyJ1Ijoic3R1YXJ0bXVqdXppIiwiYSI6ImNrNmxzeDFsajA3aG4zZm9oMHRkenR2NXAifQ.ZELsHoiwPz7Pqv955IEqPg'
 
 # Application definition
@@ -49,7 +48,6 @@ INSTALLED_APPS = [
 ]
 
 AUTH_USER_MODEL = 'account.Account'
-
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -86,8 +84,6 @@ TEMPLATES = [
     },
 ]
 
-
-
 WSGI_APPLICATION = 'TodoProject.wsgi.application'
 
 # Database
@@ -102,12 +98,12 @@ DATABASES = {
     #     'HOST': 'localhost'
     # }
     'default': {
-          'ENGINE': 'django.db.backends.postgresql',
-          'NAME': 'postgres',
-          'USER': 'postgres',
-          'PASSWORD': 'password',
-          'HOST': 'localhost'
-      }
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': 'password',
+        'HOST': 'localhost'
+    }
 }
 
 # Password validation
@@ -144,15 +140,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_URL = '/static/'
+# STATIC_URL = '/static/'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, "static"),
-#     os.path.join(BASE_DIR, "media"),
-# ]
-# STATIC_URL = '/static/'
-# MEDIA_URL = '/media/'
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn')
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'media_cdn')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+    os.path.join(BASE_DIR, "media"),
+]
+STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media_cdn')
