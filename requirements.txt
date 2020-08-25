@@ -27,9 +27,6 @@ Click==7.0
 cloudpickle==1.2.1
 colorama==0.4.3
 comtypes==1.1.7
-
-
-
 contextlib2==0.5.5
 cryptography==2.8
 cycler==0.10.0
@@ -103,7 +100,7 @@ MarkupPy==1.14
 MarkupSafe==1.1.1
 matplotlib==3.1.0
 mccabe==0.6.1
-menuinst==1.4.16
+
 mistune==0.8.4
 mkl-fft==1.0.12
 mkl-random==1.0.2
