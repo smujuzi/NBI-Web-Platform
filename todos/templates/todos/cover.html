@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <title>NBI Connectivity Platform</title>
+
+    <!-- Bootstrap core CSS -->
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.css"/>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+
+
+    <script src="http://d3js.org/d3.v4.min.js"></script>
+    <script src="http://dimplejs.org/dist/dimple.v2.3.0.min.js"></script>
+
+
+    <!-- Custom styles for this template -->
+    <link href="pricing.css" rel="stylesheet">
+    <style type="text/css">
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.nbi-link{
+
+}
+.nbi-link:hover{
+text-decoration: none;
+font-size: 16px;
+color: "28a745
+}
+.container {
+  max-width: 960px;
+}
+
+.pricing-header {
+  max-width: 700px;
+}
+
+.card-deck .card {
+  min-width: 220px;
+}
+
+.border-top { border-top: 1px solid #e5e5e5; }
+.border-bottom { border-bottom: 1px solid #e5e5e5; }
+
+.box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
+
+.selector-for-some-widget {
+  box-sizing: content-box;
+}
+
+
+
+
+
+
+
+
+
+
+    </style>
+
+    <style>
+        /*
+ * Globals
+ */
+
+/* Links */
+a,
+a:focus,
+a:hover {
+  color: #fff;
+}
+
+/* Custom default button */
+.btn-secondary,
+.btn-secondary:hover,
+.btn-secondary:focus {
+  color: #333;
+  text-shadow: none; /* Prevent inheritance from `body` */
+  background-color: #fff;
+  border: .05rem solid #fff;
+}
+
+
+/*
+ * Base structure
+ */
+
+html,
+body {
+  height: 100%;
+  background-color: #333;
+}
+
+body {
+  display: -ms-flexbox;
+  display: flex;
+  color: #b3ee3a;
+  text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
+  box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5);
+}
+
+.text{
+  display: -ms-flexbox;
+  display: flex;
+  color: #fff;
+  text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
+}
+
+.learn{
+  display: -ms-flexbox;
+  display: flex;
+  color: #b3ee3a;
+  text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
+}
+
+.cover-container {
+  max-width: 960px;
+}
+
+
+/*
+ * Header
+ */
+.masthead {
+  margin-bottom: 2rem;
+}
+
+.masthead-brand {
+  margin-bottom: 0;
+}
+
+.nav-masthead .nav-link {
+  padding: .25rem 0;
+  font-weight: 700;
+  color: rgba(255, 255, 255, .5);
+  background-color: transparent;
+  border-bottom: .25rem solid transparent;
+}
+
+.nav-masthead .nav-link:hover,
+.nav-masthead .nav-link:focus {
+  color: #b3ee3a;
+  border-bottom-color: #b3ee3a;
+}
+
+.nav-masthead .nav-link + .nav-link {
+  margin-left: 1rem;
+}
+
+.nav-masthead .active {
+  color: #fff;
+  border-bottom-color: #fff;
+}
+
+@media (min-width: 48em) {
+  .masthead-brand {
+    float: left;
+  }
+  .nav-masthead {
+    float: right;
+  }
+}
+
+
+/*
+ * Cover
+ */
+.cover {
+  padding: 0 1.5rem;
+}
+.cover .btn-lg {
+  padding: .75rem 1.25rem;
+  font-weight: 700;
+}
+
+
+/*
+ * Footer
+ */
+.mastfoot {
+  color: #b3ee3a;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+    </style>
+
+    <!-- MDBootstrap Datatables  -->
+    <link href="css/addons/datatables.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <header class="masthead mb-auto">
+        <div class="inner">
+            <img src="/static/nita.png" alt="Simply Easy Learning" width="200"
+                 height="80">
+
+
+
+            <nav class="nav nav-masthead justify-content-center">
+
+                {% if request.user.is_authenticated %}
+
+                {% if request.user.is_admin %}
+                <a class="nav-link active" href="/home/"> Home </a>
+                <a class="nav-link active" href="{% url 'account' %}">Account</a>
+                <a class="nav-link active" href="{% url 'users' %}">View Users</a>
+                <a class="nav-link active" href="/records/">Connections</a>
+                <a class="nav-link active" href="/charts/">Charts</a>
+                <a class="nav-link active" href="{% url 'logout' %}">Logout</a>
+
+                {% else %}
+                <a class="nav-link active" href="/home/"> Home </a>
+                <a class="nav-link active" href="{% url 'account' %}">Account</a>
+                <a class="nav-link active" href="/records_user/">Connections</a>
+                <a class="nav-link active" href="/charts/">Charts</a>
+                <a class="nav-link active" href="{% url 'logout' %}">Logout</a>
+                {% endif %}
+
+
+                {% else %}
+                <a class="nav-link active" href="{% url 'home' %}"> Home </a>
+                <a class="nav-link active" href="{% url 'register' %}"> Register </a>
+                <a class="nav-link active" href="{% url 'login' %}"> Login </a>
+                {% endif %}
+
+            </nav>
+
+
+        </div>
+    </header>
+    <center>
+        <main role="main" class="inner cover">
+            <h1 class="cover-heading">National Backbone Infrastructure</h1>
+            <p class="text">The NBI online platform enables users to view the current status of all the numerous MDAs
+                currently
+                connected on the network and the services they are using on it.</p>
+            <p class="lead">
+                <a href="#" class="btn btn-lg btn-secondary">Learn more</a>
+            </p>
+        </main>
+    </center>
+
+
+    <footer class="mastfoot mt-auto">
+        <center>
+            <div class="inner">
+                <p>National Information Technology Authority NBI Platform Developed by Stuart Mujuzi</p>
+            </div>
+        </center>
+    </footer>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+<script src="dashboard.js"></script>
+<!-- MDBootstrap Datatables  -->
+<script type="text/javascript" src="js/addons/datatables.min.js"></script>
+
+
+<!--<script>-->
+<!--      Holder.addTheme('thumb', {-->
+<!--        bg: '#55595c',-->
+<!--        fg: '#eceeef',-->
+<!--        text: 'Thumbnail'-->
+<!--      });-->
+<!--</script>-->
+
+<script>
+    $('.mydatatable').DataTable();
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+

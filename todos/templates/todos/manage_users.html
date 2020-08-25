@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load static %}
+{% block stuart %}
+
+    <h3> Registered Users </h3>
+
+    {% for account in accounts %}
+    <p style="color:black">{{account}}</p>
+    {% endfor %}
+
+{% endblock stuart %}

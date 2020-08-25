@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+{% block stuart %}
+
+<p> Are you sure you want to delete connection "{{item}}"</p>
+
+<form action="{% url 'delete_order' item.id %}" method="POST">
+    {% csrf_token %}
+    <a href="/home/">Cancel</a>
+
+    <input type="submit" name="Confirm">
+
+</form>
+
+
+
+{% endblock stuart %}

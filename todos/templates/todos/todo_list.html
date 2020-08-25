@@ -1,0 +1,159 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block stuart %}
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<div class="bg-light">
+
+    <div class="container-fluid" style="width: 12 00px; margin: 0 auto;">
+        <div class="row-full">
+            <div class="col-lg-*-12 offset-md-2">
+                <div class="card">
+                    <div class="card-header.shadow-sm.bg-white">
+                        <h1 class="display-5 text-info"><i class="fas fa-check-double"></i> Database </h1>
+                    </div>
+                    <div class="card-body">
+
+
+                        <u1 class="list-group">
+
+                            <!--  *******************************************************************************************-->
+                            <!--  ******************************* DISPLAY DATA FROM DATABASE **********************************-->
+                            <!--  *******************************************************************************************-->
+
+
+                            <div class="table-responsive">
+                                <p>Type something below to search for a specific record.</p>
+                                <input class="form-control" id="myInput" type="text" placeholder="Search..">
+                                <br>
+                                <div>
+                                    <a class="btn btn-outline-primary" href="/download/">Download</a>
+                                </div>
+                                <table class="table table-bordered table-hover table-sm">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">No</th>
+                                        <th scope="col">MDA</th>
+                                        <th scope="col">MDA Site</th>
+                                        <th scope="col">Location</th>
+                                        <th scope="col">District</th>
+                                        <th scope="col">Period of NBI Extension</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Internet</th>
+                                        <th scope="col">Leased MDA</th>
+                                        <th scope="col">Leased IFMS</th>
+                                        <th scope="col">Dark Fibre</th>
+                                        <th scope="col">FY Period of Connectivity</th>
+                                        <th scope="col">Date of Connection Internet Bandwidth</th>
+                                        <th scope="col">Date of Connection IFMS</th>
+                                        <th scope="col">Date of Connection Leased Lines</th>
+                                        <th scope="col">Date of Connection Dark Fibre</th>
+                                        <th scope="col">Internet Capacity</th>
+                                        <th scope="col">Leased MDA Capacity</th>
+                                        <th scope="col">Leased IFMS Capacity</th>
+                                        <th scope="col">Dark Fibre Quantity</th>
+                                        <th scope="col">Fibre Done</th>
+                                        <th scope="col">ODF Installed</th>
+                                        <th scope="col">Latitude</th>
+                                        <th scope="col">Longitude</th>
+                                        <th scope="col">Comments</th>
+
+                                    </tr>
+                                    </thead>
+
+                                    {% for nbi in todo_list %}
+
+                                    <tbody id="myTable">
+                                    <tr>
+
+                                        <th scope="row">{{nbi.id}}</th>
+                                        <td>{{nbi.no}}</td>
+                                        <td>{{nbi.mda}}</td>
+                                        <td>{{nbi.mda_site}}</td>
+                                        <td>{{nbi.location}}</td>
+                                        <td>{{nbi.district}}</td>
+                                        <td>{{nbi.period_of_nbi_extension}}</td>
+                                        <td>{{nbi.status}}</td>
+                                        <td>{{nbi.internet}}</td>
+                                        <td>{{nbi.leased_mda}}</td>
+                                        <td>{{nbi.leased_IFMS}}</td>
+                                        <td>{{nbi.dark_fibre}}</td>
+                                        <td>{{nbi.fy_period_of_connectivity}}</td>
+                                        <td>{{nbi.date_of_connection_internet_bandwidth}}</td>
+                                        <td>{{nbi.date_of_connection_IFMS}}</td>
+                                        <td>{{nbi.date_of_connection_Leased_Lines}}</td>
+                                        <td>{{nbi.date_of_connection_dark_fibre}}</td>
+                                        <td>{{nbi.internet_capacity}}</td>
+                                        <td>{{nbi.leased_mda_capacity}}</td>
+                                        <td>{{nbi.leased_ifms_capacity}}</td>
+                                        <td>{{nbi.dark_fibre_quantity}}</td>
+                                        <td>{{nbi.fibre_done}}</td>
+                                        <td>{{nbi.odf_installed}}</td>
+                                        <td>{{nbi.latitude}}</td>
+                                        <td>{{nbi.longitude}}</td>
+                                        <td>{{nbi.comments}}</td>
+
+                                        <!--  *******************************************************************************************-->
+                                        <!--  ******************************* DELETE DATA FROM DATABASE *********************************-->
+                                        <!--  *******************************************************************************************-->
+                                        <td>
+                                            <form action="{%url 'delete_todo_item' todo_id=nbi.id %}" method="post"
+                                                  class="float-right d-inline">
+                                                {% csrf_token %}
+                                                <button type="submit" class="btn">
+                                                    <i class="far fa-trash-alt fa-lg text-danger float-right"></i>
+                                                </button>
+                                            </form>
+                                        </td>
+
+                                        {% endfor %}
+
+                                    </tr>
+
+                                    </tbody>
+
+
+                                </table>
+
+
+                            </div>
+
+
+                        </u1>
+
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+
+
+
+</script>
+
+{% endblock stuart %}

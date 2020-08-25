@@ -1,0 +1,381 @@
+{% extends "base.html" %}
+{% load static %}
+{% block stuart %}
+<div class="container">
+    <div class="container.shadow-sm.bg-white text-center">
+        <h1 class="h2" style="color: #4876ff;"> Edit Record</h1>
+    </div>
+
+
+
+        <form action="/change/" method="post" autocomplete="off">
+            {% csrf_token %}
+
+            <div class="row">
+                <div class="col-md-8 order-md-1">
+
+                    <!--*********************************************************-->
+                    <!--********************** MDA ******************************-->
+                    <!--*********************************************************-->
+
+                    <h4 class="mb-3">MDA</h4>
+                    <form class="needs-validation" novalidate>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="No">No</label>
+                                <input name="no" type="text" style="background-color: #f8f8f8;" class="form-control"
+                                       id="No"
+                                       value="{{edit.no}}" placeholder={{edit.no}} required>
+                                <div class="invalid-feedback">
+                                    Valid No is required.
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="MDA">MDA</label>
+                                <input name="mda" type="text" class="form-control" id="MDA" value="{{edit.mda}}"
+                                       required>
+                                <div class="invalid-feedback">
+                                    Valid MDA is required.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="Site">Site</label>
+                                <input name="mda_site" type="text" class="form-control" id="Site"
+                                       value="{{edit.mda_site}}"
+                                       required>
+                                <div class="invalid-feedback">
+                                    Valid Site is required.
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="Location">Location</label>
+                                <input name="location" type="text" class="form-control" id="Location"
+                                       value="{{edit.location}}"
+                                       required>
+                                <div class="invalid-feedback">
+                                    Valid Location is required.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="District">District</label>
+                                <input name="district" type="text" class="form-control" id="District"
+                                       value="{{edit.district}}"
+                                       required>
+                                <div class="invalid-feedback">
+                                    Valid District is required.
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="Latitude">Latitude</label>
+                                <input name="latitude" type="text" class="form-control" id="Latitude"
+                                       value="{{edit.latitude}}"
+                                       required>
+                                <div class="invalid-feedback">
+                                    Valid Latitude is required.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="Longitude">Longitude</label>
+                                <input name="longitude" type="text" class="form-control" id="Longitude"
+                                       value="{{edit.longitude}}"
+                                       required>
+                                <div class="invalid-feedback">
+                                    Valid Longitude is required.
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="Period of NBI Extension">Period of NBI Extension</label>
+                                <input name="period_of_nbi_extension" type="text" class="form-control"
+                                       id="Period of NBI Extension"
+                                       value="{{edit.period_of_nbi_extension}}" required>
+                                <div class="invalid-feedback">
+                                    Valid Period of NBI Extension is required.
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!--*********************************************************-->
+                        <!--********************** MDA ******************************-->
+                        <!--*********************************************************-->
+
+
+                        <!--*********************************************************-->
+                        <!--********************** SERVICE **************************-->
+                        <!--*********************************************************-->
+
+
+                        <hr class="mb-4">
+
+                        <hr class="mb-4">
+
+                        <h4 class="mb-3">Service</h4>
+
+                        <div class="d-block my-3">
+
+                            <div class="row">
+                                <div class="col-md-5 mb-3">
+                                    <label for="Status">Status</label>
+                                    <select name="status" class="custom-select d-block w-100" id="Status"
+                                            value="{{edit.status}}" placeholder="{{edit.status}}" required>
+                                        <option value="{{edit.status}}">{{edit.status}}</option>
+                                        <option>Connected</option>
+                                        <option>Not Connected</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Please select a valid Status.
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="Internet">Internet</label>
+                                    <select name="internet" class="custom-select d-block w-100" id="Internet" required>
+                                        <option value="{{edit.internet}}">{{edit.internet}}</option>
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Please provide a valid Internet option.
+                                    </div>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <label for="Leased-MDA">Leased MDA</label>
+                                    <select name="leased_mda" class="custom-select d-block w-100" id="Leased-MDA"
+                                            required>
+                                        <option value="{{edit.leased_mda}}">{{edit.leased_mda}}</option>
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Leased MDA required.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-5 mb-3">
+                                    <label for="Leased-IFMS">Leased IFMS</label>
+                                    <select name="leased_ifms" class="custom-select d-block w-100" id="Leased-IFMS"
+                                            required>
+                                        <option value="{{edit.leased_IFMS}}">{{edit.leased_IFMS}}</option>
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Please select a valid Leased IFMS option.
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="Dark-Fibre">Dark Fibre</label>
+                                    <select name="dark_fibre" class="custom-select d-block w-100" id="Dark-Fibre"
+                                            required>
+                                        <option value="{{edit.dark_fibre}}">{{edit.dark_fibre}}</option>
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Please provide a valid Dark Fibre option.
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="FY-Period-Of-Connectivity">FY Period Of Connectivity</label>
+                                    <input name="fy_period_of_connectivity" type="text" class="form-control"
+                                           id="FY-Period-Of-Connectivity" value="{{edit.fy_period_of_connectivity}}"
+                                           required>
+                                    <div class="invalid-feedback">
+                                        FY Period Of Connectivity is required.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--*********************************************************-->
+                        <!--********************** SERVICE **************************-->
+                        <!--*********************************************************-->
+
+
+                        <!--*********************************************************-->
+                        <!--**************** DATE OF CONNECTION *********************-->
+                        <!--*********************************************************-->
+
+                        <hr class="mb-4">
+
+                        <hr class="mb-4">
+
+                        <h4 class="mb-3">Date Of Connection</h4>
+
+                        <div class="d-block my-3">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="Internet-Date Of Connection">Internet-Date Of Connection</label>
+                                    <input name="date_of_connection_internet_bandwidth" type="text" class="form-control"
+                                           id="Internet-Date Of Connection"
+                                           value="{{edit.date_of_connection_internet_bandwidth}}" required>
+                                    <div class="invalid-feedback">
+                                        Internet-Date Of Connection is required
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="IFMS-Date Of Connection">IFMS-Date Of Connection</label>
+                                    <input name="date_of_connection_ifms" type="text" class="form-control"
+                                           id="IFMS-Date Of Connection"
+                                           value="{{edit.date_of_connection_IFMS}}" required>
+                                    <div class="invalid-feedback">
+                                        IFMS-Date Of Connection is required
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="Leased Lines-Date Of Connection">Leased Lines-Date Of Connection</label>
+                                    <input name="date_of_connection_leased_lines" type="text" class="form-control"
+                                           id="Leased Lines-Date Of Connection"
+                                           value="{{edit.date_of_connection_Leased_Lines}}" required>
+                                    <div class="invalid-feedback">
+                                        Leased Lines-Date Of Connection is required
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="Dark Fibre-Date Of Connection">Dark Fibre-Date Of Connection</label>
+                                    <input name="date_of_connection_dark_fibre" type="text" class="form-control"
+                                           id="Dark Fibre-Date Of Connection"
+                                           value="{{edit.date_of_connection_dark_fibre}}" required>
+                                    <div class="invalid-feedback">
+                                        Dark Fibre-Date Of Connection is required
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!--*********************************************************-->
+                        <!--**************** DATE OF CONNECTION *********************-->
+                        <!--*********************************************************-->
+
+
+                        <!--*********************************************************-->
+                        <!--**************** CAPACITY ********************************-->
+                        <!--**********************************************************-->
+
+                        <hr class="mb-4">
+
+                        <hr class="mb-4">
+
+                        <h4 class="mb-3">Capacity</h4>
+
+                        <div class="d-block my-3">
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="Internet-Capacity">Internet Capacity</label>
+                                    <input name="internet_capacity" type="text" class="form-control"
+                                           id="Internet-Capacity"
+                                           value="{{edit.internet_capacity}}" required>
+                                    <div class="invalid-feedback">
+                                        Internet Capacity is required
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="Leased-MDA-Capacity">Leased MDA Capacity</label>
+                                    <input name="leased_mda_capacity" type="text" class="form-control"
+                                           id="Leased-MDA-Capacity" value="{{edit.leased_mda_capacity}}" required>
+                                    <div class="invalid-feedback">
+                                        Leased MDA Capacity is required
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="Leased-IFMS-Capacity">Leased IFMS Capacity</label>
+                                    <input name="leased_ifms_capacity" type="text" class="form-control"
+                                           id="Leased-IFMS-Capacity" value="{{edit.leased_ifms_capacity}}" required>
+                                    <div class="invalid-feedback">
+                                        Leased IFMS Capacity is required
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="Dark-Fibre-Quantity">Dark Fibre Quantity</label>
+                                    <input name="dark_fibre_quantity" type="text" class="form-control"
+                                           id="Dark-Fibre-Quantity" value="{{edit.dark_fibre_quantity}}" required>
+                                    <div class="invalid-feedback">
+                                        Dark Fibre Quantity is required
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="Fibre-Done">Fibre Done</label>
+                                    <input name="fibre_done" type="text" class="form-control" id="Fibre-Done"
+                                           value="{{edit.fibre_done}}" required>
+                                    <div class="invalid-feedback">
+                                        Fibre Done is required
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="ODF-Installed">ODF Installed</label>
+                                    <input name="odf_installed" type="text" class="form-control" id="ODF-Installed"
+                                           value="{{edit.odf_installed}}" required>
+                                    <div class="invalid-feedback">
+                                        ODF Installed is required
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--*********************************************************-->
+                        <!--**************** CAPACITY ********************************-->
+                        <!--**********************************************************-->
+
+
+                        <!--*********************************************************-->
+                        <!--******************** COMMENTS ****************************-->
+                        <!--**********************************************************-->
+
+                        <hr class="mb-4">
+
+                        <hr class="mb-4">
+
+                        <h4 class="mb-3">Comments</h4>
+
+                        <div class="d-block my-3">
+
+                            <div class="row">
+                                <div class="col-md-12 mb-3">
+                                    <label for="Comments">Comments</label>
+                                    <input name="comments" type="text" class="form-control" id="Comments"
+                                           value="{{edit.comments}}" required>
+                                    <div class="invalid-feedback">
+                                        Comments are required
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <hr class="mb-4">
+                            <!--                        <a href="{%url 'delete_todo_item' todo_id=edit.id %}">-->
+                            <!--                            <button class="btn btn-primary btn-lg btn-block" type="submit">SUBMIT-->
+                            <!--                            </button>-->
+                            <!--                        </a>-->
+
+
+                            <button class="btn btn-primary btn-lg btn-block" type="submit">SUBMIT
+                            </button>
+
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </form>
+</div>
+
+{% endblock stuart %}

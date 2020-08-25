@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% load static %}
+{% block stuart %}
+<div class="container-fluid" style="margin-top:-10px">
+    <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+            <div class="sidebar-sticky">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/dashboard/">
+                            <svg class="bi bi-chevron-right" width="15"
+                                 height="15" viewBox="0 0 20 20" fill="currentColor"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                      d="M6.646 3.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L12.293 10 6.646 4.354a.5.5 0 010-.708z"
+                                      clip-rule="evenodd"/>
+                            </svg>
+                            <span data-feather="home"></span>
+                            Graph <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/dashboardchart/">
+                            <span data-feather="file"></span>
+                            Pie Chart
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/dashboardmap/">
+                            <span data-feather="shopping-cart"></span>
+                            Map
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2">Dashboard</h1>
+<!--                <div class="btn-toolbar mb-2 mb-md-0">-->
+<!--                    <div class="btn-group mr-2">-->
+<!--                        <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>-->
+<!--                        <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>-->
+<!--                    </div>-->
+<!--                    <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">-->
+<!--                        <span data-feather="calendar"></span>-->
+<!--                        This week-->
+<!--                    </button>-->
+<!--                </div>-->
+            </div>
+
+            <!--      TESTING -->
+
+
+            <div>
+                <div id="chart">
+                    <h4>Number of MDA Sites Connected to Various Services</i></h4>
+
+                    <script type="text/javascript">
+                    var svg = dimple.newSvg("#chart", 600, 400);
+                    var data = [
+                      { "Service":"Internet", "Number":{{internet}} },
+                      { "Service":"Leased MDA", "Number":{{leased_mda}} },
+                      { "Service":"Leased IFMS", "Number":{{leased_ifms}} },
+                      { "Service":"Dark Fibre", "Number":{{dark_fibre}} }
+                    ];
+                    var chart = new dimple.chart(svg, data);
+                    chart.addCategoryAxis("x", "Service");
+                    chart.addMeasureAxis("y", "Number");
+                    chart.addSeries(null, dimple.plot.bar);
+                    chart.draw();
+
+
+                    </script>
+                    <h6>Number of MDA Sites = {{total}} </i></h6>
+                </div>
+            </div>
+
+
+            <!--      TESTING -->
+
+        </main>
+    </div>
+</div>
+
+{% endblock stuart %}
